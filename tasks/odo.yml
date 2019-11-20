@@ -1,0 +1,9 @@
+---
+# OpenShift Do - Fast, iterative OpenShift development
+# https://github.com/openshift/odo
+# Only for openshit v4
+- name: Installing OpenShift odo
+  unarchive:
+    src: "{{ openshift_odo_url }}"
+    dest: "{{ install_destination }}"
+    remote_src: yes
