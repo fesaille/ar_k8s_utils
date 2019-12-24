@@ -1,6 +1,7 @@
 
 # - assert: { that: "openshift_oc_version != 'RedHat'" }
 - include_tasks: helm.yml
+- include_tasks: kubectl.yml
 
 # Helm - The Kubernetes Package Manager
 # https://helm.sh
