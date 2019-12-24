@@ -1,0 +1,11 @@
+---
+- name: Installing Helm
+  unarchive:
+    src: "{{ helm_url }}"
+    dest: "{{ install_destination }}"
+    remote_src: yes
+    exclude:
+    - README.md
+    - LICENSE
+    extra_opts: [--strip-components=1]
+

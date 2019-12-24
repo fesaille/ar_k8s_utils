@@ -1,19 +1,9 @@
 
 # - assert: { that: "openshift_oc_version != 'RedHat'" }
+- include_tasks: helm.yml
 
 # Helm - The Kubernetes Package Manager
 # https://helm.sh
-- name: Installing Helm
-  unarchive:
-    src: "{{ helm_url }}"
-    dest: "{{ install_destination }}"
-    remote_src: yes
-    exclude:
-    - README.md
-    - LICENSE
-    extra_opts: [--strip-components=1]
-        # - --strip=1
-
 - name: Installing OpenShift cli
   unarchive:
     src: "{{ openshift_oc_url }}"
