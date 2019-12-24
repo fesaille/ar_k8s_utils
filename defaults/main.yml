@@ -6,12 +6,10 @@ openshift_major_version: "4"
 openshift_oc_version: "latest"
 openshift_odo_version: "latest"
 
-
 openshift_base_url: "https://mirror.openshift.com/pub/openshift-v{{ openshift_major_version }}/clients"
 
 openshift_oc_url: "{{ openshift_base_url }}{{ '/oc' if openshift_major_version == '4' else '' }}/{{ openshift_oc_version }}/linux/oc.tar.gz"
 openshift_odo_url: "{{ openshift_base_url }}/odo/{{ openshift_odo_version }}/odo-linux-amd64.tar.gz"
-
 
 helm_version: 'v3.0.0'
 helm_url: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"

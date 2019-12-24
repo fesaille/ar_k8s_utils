@@ -13,15 +13,30 @@
     url: 'https://packages.cloud.google.com/apt/doc/apt-key.gpg'
     state: present
 
-- name: install kubectl (apt)
-  become: yes
-  apt_repository:
-    repo: deb [arch=amd64] deb https://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main
-    filename: kubernetes
-    state: present
+# - name: install kubectl (apt)
+#   become: yes
+#   apt_repository:
+#     repo: deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main
+#     filename: kubernetes
+#    state: present
 
-- name: install kubectl (apt)
-  become: yes
-  apt:
-    name: kubectl
-    state: present
+# - name: install kubectl (apt)
+#   become: yes
+#   apt:
+#     name: kubectl
+#     state: present
+
+- name: retrieve kubectl latest version
+  uri:
+    url: https://storage.googleapis.com/kubernetes-release/release/stable.txt
+    return_content: yes
+  register: kubectl_version
+
+
+- name: install kubectl
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version.content | trim() }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin
+    group: root
+    owner: root
+    mode: '755'
