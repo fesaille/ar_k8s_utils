@@ -1,10 +1,10 @@
-
+---
 # - assert: { that: "openshift_oc_version != 'RedHat'" }
 - include_tasks: helm.yml
-  tag:
+  tags:
     - k8s
 - include_tasks: kubectl.yml
-  tag:
+  tags:
     - k8s
 
 # Helm - The Kubernetes Package Manager
@@ -14,12 +14,12 @@
     src: "{{ openshift_oc_url }}"
     dest: "{{ install_destination }}"
     remote_src: yes
-  tag:
+  tags:
     - k8s
 
 - include_tasks: odo.yml
   when: openshift_major_version == "4"
-  tag:
+  tags:
     - k8s
 
 

@@ -8,5 +8,5 @@
     - README.md
     - LICENSE
     extra_opts: [--strip-components=1]
-  tag:
+  tags:
     - k8s
